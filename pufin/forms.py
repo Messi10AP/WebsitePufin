@@ -15,7 +15,7 @@ class RegisterForm(forms.Form):
     Orig_Loanamount = forms.CharField( max_length = 25)
     Orig_Loandate = forms.DateField(initial=datetime.date.today)
     Published = forms.ChoiceField(choices=GRADE_CHOICES)
-    upload = forms.FileField(label='Select a file')
+    upload = forms.FileField()
     def clean(self):
         cleaned_data = super(RegisterForm, self).clean()
         print cleaned_data   
