@@ -34,25 +34,9 @@
 		                    {% endfor %}
 		                </ul>
                 {% endif %}
-				<form action="/" method="post">
+				<form action="/" method="post" enctype= multipart/form-data>
 				{% csrf_token %}
-<!--
-					<div class="top-row">
-						<div class="field-wrap">
-							<label>
-								<font size="3">First Name</font><span class="req"></span>
-							</label>
-							{{ form.first_name }}
-						</div>
-				
-						<div class="field-wrap">
-							<label>
-								<font size="3">Last Name</font><span class="req"></span>
-							</label>
-							{{ form.last_name }}
-						</div>
-					</div>
--->
+
 						<div class="field-wrap">
 							<label>
 								<font size="3">Original Platform</font><span class="req"></span>
@@ -86,6 +70,14 @@
 							<font size="3">Published</font> <span class="req">&nbsp;&nbsp;</span>
 						</label>
 						{{ form.Published }}
+					</div>
+				</div>
+				<div class="row">
+					<div class="field-wrap override">
+						<label>
+							<font size="3">Upload Files</font> <span class="req">&nbsp;&nbsp;</span>
+						</label>
+						{{ form.upload }}
 					</div>
 				</div>
 					<button type="submit" class="button button-block waves-effect waves-light"/>Get Started</button>

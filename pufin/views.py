@@ -26,10 +26,10 @@ def Form(request):
     print "ASDASD"
     if request.method == 'POST':
         print "post signup"
-        form = RegisterForm(request.POST)
+        form = RegisterForm(request.POST, request.FILES)
         try:
             if form.is_valid():
-                a = UserInfo(Orig_Platform = form.cleaned_data['Orig_Platform'], Orig_Loanid = form.cleaned_data['Orig_Loanid'], Orig_Loanamount = form.cleaned_data['Orig_Loanamount'], Orig_Loandate = form.cleaned_data['Orig_Loandate'], Published=form.cleaned_data['Published'])
+                a = UserInfo(Orig_Platform = form.cleaned_data['Orig_Platform'], Orig_Loanid = form.cleaned_data['Orig_Loanid'], Orig_Loanamount = form.cleaned_data['Orig_Loanamount'], Orig_Loandate = form.cleaned_data['Orig_Loandate'], Published=form.cleaned_data['Published'], upload=request.FILES['upload'])
 		a.save()
 		print "ASDASDASDASD"
 		"""

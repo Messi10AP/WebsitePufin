@@ -8,4 +8,5 @@ class UserInfo(models.Model):
     Orig_Loanamount = models.CharField( max_length = 25)
     Orig_Loandate = models.DateField( default=date.today)
     Published = models.IntegerField()
+    upload = models.FileField(upload_to='uploads/')
 
