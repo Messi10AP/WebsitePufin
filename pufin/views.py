@@ -17,6 +17,7 @@ from datetime import date, timedelta
 from django.core.urlresolvers import reverse
 from django.shortcuts import render
 import time
+from datetime import datetime
 
 @csrf_exempt
 def Form(request):
@@ -28,7 +29,6 @@ def Form(request):
         form = RegisterForm(request.POST)
         try:
             if form.is_valid():
-                print form.cleaned_data
                 a = UserInfo(Orig_Platform = form.cleaned_data['Orig_Platform'], Orig_Loanid = form.cleaned_data['Orig_Loanid'], Orig_Loanamount = form.cleaned_data['Orig_Loanamount'], Orig_Loandate = form.cleaned_data['Orig_Loandate'], Published=form.cleaned_data['Published'])
 		a.save()
 		print "ASDASDASDASD"

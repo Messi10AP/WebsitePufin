@@ -13,7 +13,7 @@ class RegisterForm(forms.Form):
     Orig_Platform = forms.CharField(max_length = 25)
     Orig_Loanid = forms.CharField( max_length = 25)
     Orig_Loanamount = forms.CharField( max_length = 25)
-    Orig_Loandate = forms.CharField( max_length = 25)
+    Orig_Loandate = forms.DateField(initial=datetime.date.today)
     Published = forms.ChoiceField(choices=GRADE_CHOICES)
     def clean(self):
         cleaned_data = super(RegisterForm, self).clean()
