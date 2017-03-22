@@ -2,13 +2,22 @@ from django.contrib import admin
 from .models import UserInfo
 
 class UserAdmin(admin.ModelAdmin):
-    fields = ['first_name', 'last_name']
-    list_display = ['first_name','last_name']
+    fields = ['Orig_Platform', 'Orig_Loanid', 'Orig_Loanamount', 'Orig_Loandate', 'Published']
+    list_display = ['Orig_Platform', 'Orig_Loanid', 'Orig_Loanamount', 'Orig_Loandate', 'Published']
 
-    def first_name(self,obj):
-        return obj.user.first_name
+    def Orig_Platform(self,obj):
+        return obj.user.Orig_Platform
 
-    def last_name(self,obj):
-        return obj.user.last_name
+    def Orig_Loanid(self,obj):
+        return obj.user.Orig_Loanid
+
+    def Orig_Loanamount(self,obj):
+        return obj.user.Orig_Loanamount
+
+    def Orig_Loandate(self,obj):
+        return obj.user.Orig_Loandate
+
+    def Published(self,obj):
+        return obj.user.Published
 
 admin.site.register(UserInfo, UserAdmin)

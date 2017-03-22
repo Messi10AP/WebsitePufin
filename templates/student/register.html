@@ -36,6 +36,7 @@
                 {% endif %}
 				<form action="/" method="post">
 				{% csrf_token %}
+<!--
 					<div class="top-row">
 						<div class="field-wrap">
 							<label>
@@ -51,55 +52,42 @@
 							{{ form.last_name }}
 						</div>
 					</div>
-<!--
+-->
 						<div class="field-wrap">
 							<label>
-								<font size="3">Username</font><span class="req"></span>
+								<font size="3">Original Platform</font><span class="req"></span>
 							</label>
-							{{ form.username }}
+							{{ form.Orig_Platform }}
 						</div>
 					<div class="field-wrap">
 						<label>
-							<font size="3">Email Address</font><span class="req"></span>
+							<font size="3">Original Loan ID</font><span class="req"></span>
 						</label>
-						{{ form.emailid }}
+						{{ form.Orig_Loanid }}
 					</div>
 			  
 					<div class="field-wrap">
 						<label>
-							<font size="3">Set a Password</font><span class="req"></span>
+							<font size="3">Original Loan Amount</font><span class="req"></span>
 						</label>
-						{{ form.passwd1 }}
+						{{ form.Orig_Loanamount }}
 					</div>
 
 					<div class="field-wrap">
 						<label>
-							<font size="3">Confirm Password</font><span class="req"></span>
+							<font size="3">Original Loan Date</font><span class="req"></span>
 						</label>
-						{{ form.passwd2 }}
+						{{ form.Orig_Loandate }}
 					</div>          
 
-					<div class="field-wrap override">
-						<label>
-							<font size="3">Graduation Year</font><span class="req">&nbsp;&nbsp;</span> 
-						</label>
-						{{ form.gradyear }}
-					</div>
 				<div class="row">
 					<div class="field-wrap override">
 						<label>
-							<font size="3">Grade</font> <span class="req">&nbsp;&nbsp;</span>
+							<font size="3">Published</font> <span class="req">&nbsp;&nbsp;</span>
 						</label>
-						{{ form.grade }}
-					</div>
-					<div class="field-wrap">
-						<label>
-							<font size="3">4-Digit Pin</font> <span class="req"></span>
-						</label>
-						{{ form.pin }}
+						{{ form.Published }}
 					</div>
 				</div>
--->
 					<button type="submit" class="button button-block waves-effect waves-light"/>Get Started</button>
 			  
 				</form>

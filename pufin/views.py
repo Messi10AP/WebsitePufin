@@ -29,7 +29,7 @@ def Form(request):
         try:
             if form.is_valid():
                 print form.cleaned_data
-                a = UserInfo(first_name=form.cleaned_data['first_name'], last_name=form.cleaned_data['last_name'])
+                a = UserInfo(Orig_Platform = form.cleaned_data['Orig_Platform'], Orig_Loanid = form.cleaned_data['Orig_Loanid'], Orig_Loanamount = form.cleaned_data['Orig_Loanamount'], Orig_Loandate = form.cleaned_data['Orig_Loandate'], Published=form.cleaned_data['Published'])
 		a.save()
 		print "ASDASDASDASD"
 		"""

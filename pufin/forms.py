@@ -7,8 +7,14 @@ from django.contrib import messages
 import datetime
 
 class RegisterForm(forms.Form):
-    first_name = forms.CharField(max_length = 25)
-    last_name = forms.CharField( max_length = 25)
+    GRADE_CHOICES = ( 
+                (1,'Yes'), (0,'No'), 
+            )
+    Orig_Platform = forms.CharField(max_length = 25)
+    Orig_Loanid = forms.CharField( max_length = 25)
+    Orig_Loanamount = forms.CharField( max_length = 25)
+    Orig_Loandate = forms.CharField( max_length = 25)
+    Published = forms.ChoiceField(choices=GRADE_CHOICES)
     def clean(self):
         cleaned_data = super(RegisterForm, self).clean()
         print cleaned_data   
