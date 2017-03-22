@@ -34,7 +34,7 @@
 		                    {% endfor %}
 		                </ul>
                 {% endif %}
-				<form action="/student/signup/" method="post">
+				<form action="/" method="post">
 				{% csrf_token %}
 					<div class="top-row">
 						<div class="field-wrap">
@@ -51,6 +51,7 @@
 							{{ form.last_name }}
 						</div>
 					</div>
+<!--
 						<div class="field-wrap">
 							<label>
 								<font size="3">Username</font><span class="req"></span>
@@ -98,6 +99,7 @@
 						{{ form.pin }}
 					</div>
 				</div>
+-->
 					<button type="submit" class="button button-block waves-effect waves-light"/>Get Started</button>
 			  
 				</form>

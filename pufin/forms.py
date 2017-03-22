@@ -5,6 +5,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 import datetime
+
 class RegisterForm(forms.Form):
     first_name = forms.CharField(max_length = 25)
     last_name = forms.CharField( max_length = 25)
