@@ -18,7 +18,8 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render
 import time
 from datetime import datetime
-
+import hashlib
+import sys
 @csrf_exempt
 def Form(request):
     #deleteevent()
@@ -29,7 +30,17 @@ def Form(request):
         form = RegisterForm(request.POST, request.FILES)
         try:
             if form.is_valid():
-                a = UserInfo(Orig_Platform = form.cleaned_data['Orig_Platform'], Orig_Loanid = form.cleaned_data['Orig_Loanid'], Orig_Loanamount = form.cleaned_data['Orig_Loanamount'], Orig_Loandate = form.cleaned_data['Orig_Loandate'], Published=form.cleaned_data['Published'], upload=request.FILES['upload'])
+     	        with open('media/name.txt', 'wb+') as destination:
+		    for chunk in request.FILES['upload'].chunks():
+		        destination.write(chunk)
+		sha256 = hashlib.sha256()
+                a = UserInfo(Orig_Platform = form.cleaned_data['Orig_Platform'], Orig_Loanid = form.cleaned_data['Orig_Loanid'], Orig_Loanamount = form.cleaned_data['Orig_Loanamount'], Orig_Loandate = form.cleaned_data['Orig_Loandate'], Published=form.cleaned_data['Published'], upload=request.FILES['upload'], SHA_256=0)
+		a.save()
+		with open('media/'+str(a.upload), 'rb') as f:
+        	    for block in iter(lambda: f.read(65536), b''):
+            		sha256.update(block)
+		HASH = sha256.hexdigest()
+		a.SHA_256 = HASH
 		a.save()
 		print "ASDASDASDASD"
 		"""
