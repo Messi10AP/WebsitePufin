@@ -30,29 +30,22 @@ def Form(request):
         form = RegisterForm(request.POST, request.FILES)
         try:
             if form.is_valid():
-     	        with open('media/name.txt', 'wb+') as destination:
-		    for chunk in request.FILES['upload'].chunks():
-		        destination.write(chunk)
+     	        text=""
+	        for chunk in request.FILES['upload'].chunks():
+		    text += (chunk)
 		sha256 = hashlib.sha256()
-                a = UserInfo(Orig_Platform = form.cleaned_data['Orig_Platform'], Orig_Loanid = form.cleaned_data['Orig_Loanid'], Orig_Loanamount = form.cleaned_data['Orig_Loanamount'], Orig_Loandate = form.cleaned_data['Orig_Loandate'], Published=form.cleaned_data['Published'], upload=request.FILES['upload'], SHA_256=0)
+		sha256.update(text)
+		HASH = sha256.hexdigest()
+                a = UserInfo(Orig_Platform = form.cleaned_data['Orig_Platform'], Orig_Loanid = form.cleaned_data['Orig_Loanid'], Orig_Loanamount = form.cleaned_data['Orig_Loanamount'], Orig_Loandate = form.cleaned_data['Orig_Loandate'], Published=form.cleaned_data['Published'], SHA_256=HASH)
 		a.save()
+		"""
 		with open('media/'+str(a.upload), 'rb') as f:
         	    for block in iter(lambda: f.read(65536), b''):
             		sha256.update(block)
 		HASH = sha256.hexdigest()
 		a.SHA_256 = HASH
 		a.save()
-		print "ASDASDASDASD"
 		"""
-		print u.id
-                ui.save()
-		#j = User.objects.get(id = 3932)
-		#print j
-                print "DONE"
-                user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['passwd1'])
-                login(request,user)
-                print "after login in signup"
-"""
                 return redirect("/")
             else:
                 print "error"
